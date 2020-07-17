@@ -1,0 +1,19 @@
+server:
+  port: 8089
+spring:
+  cloud:
+    zookeeper:
+      discovery:
+        register: false
+        enabled: true
+      connect-string: localhost:2181
+    loadbalancer:
+      ribbon:
+        enabled: false
+  application:
+    name: hystrix-webapi
+
+#\u5728feign\u4E2D\u5F00\u542Fhystrix
+feign:
+  hystrix:
+    enabled: true

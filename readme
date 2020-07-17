@@ -1,0 +1,16 @@
+@SpringBootApplication:SpringBoot注解
+@EnableFeignClients：启用feign客户端
+@EnableCircuitBreaker：SpringCloud中使用Hystrix
+
+
+消费端：
+@FeignClient(value = "hystrix-service", fallback = TestServiceFallBack.class)
+public interface TestServiceClient {
+
+    @GetMapping("test")
+    String test(@PathVariable("str") String str);
+}
+
+@FeignClient属性
+    value:服务端的引用名称
+    fallback:进行服务降级的类，该类需要实现该FeignClient接口，进行降级实现
